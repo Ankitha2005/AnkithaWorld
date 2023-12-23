@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankitha's World</title>
+    <style>
+        body {
+            background-color: pink;
+            color: black;
+            text-align: center;
+            font-size: larger;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #welcome, #question, #nameQuestion, #relationQuestion, #result {
+            display: none;
+        }
+    </style>
+    <script>
+        function showWelcome() {
+            document.getElementById('welcome').style.display = 'block';
+            setTimeout(function() {
+                document.getElementById('welcome').style.display = 'none';
+                showQuestion();
+            }, 2000);
+        }
+
+        function showQuestion() {
+            document.getElementById('question').style.display = 'block';
+        }
+
+        function askName() {
+            document.getElementById('question').style.display = 'none';
+            document.getElementById('nameQuestion').style.display = 'block';
+        }
+
+        function askRelation() {
+            document.getElementById('nameQuestion').style.display = 'none';
+            document.getElementById('relationQuestion').style.display = 'block';
+        }
+
+        function showResult() {
+            var name = document.getElementById('name').value;
+            var relation = document.getElementById('relation').value;
+
+            if (name.toLowerCase() === 'rakesh') {
+                document.getElementById('result').innerText = "I LOVE YOU AND I MISS YOU > MEET YOU SOON ❤️❤️";
+                alert("VIRTUAL HUGS AND KISS TO YOU 🤗💋");
+            } else {
+                document.getElementById('result').innerText = "ANKITHA LOVES YOU ❤️";
+                alert("HERE IS A CHOCOLATE FOR YOU 🍫");
+            }
+
+            document.getElementById('relationQuestion').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            alert("Thank you! Bye!");
+        }
+    </script>
+</head>
+<body onload="showWelcome()">
+    <div id="welcome">Welcome to Ankitha's World!</div>
+    <div id="question">
+        Are you my friend or family?
+        <br>
+        <button onclick="showWelcome()">No</button>
+        <button onclick="askName()">Yes</button>
+    </div>
+    <div id="nameQuestion" style="display: none;">
+        What's your name?
+        <br>
+        <input type="text" id="name">
+        <br>
+        <button onclick="askRelation()">Enter</button>
+    </div>
+    <div id="relationQuestion" style="display: none;">
+        How are you related to Ankitha?
+        <br>
+        <input type="text" id="relation">
+        <br>
+        <button onclick="showResult()">Enter</button>
+    </div>
+    <div id="result" style="display: none;"></div>
+</body>
+</html>
+
